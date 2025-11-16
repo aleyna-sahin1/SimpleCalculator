@@ -1,4 +1,0 @@
-# SimpleCalculator
-# SimpleCalculator
-# SimpleCalculator
-# SimpleCalculator
