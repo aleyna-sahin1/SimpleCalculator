@@ -70,6 +70,8 @@ public class MainActivity extends AppCompatActivity {
         binding.number1EditText.setText("");
         binding.number2EditText.setText("");
         binding.resultText.setText("");
-        
+        binding.number1EditText.requestFocus();
+
+
     }
 }
