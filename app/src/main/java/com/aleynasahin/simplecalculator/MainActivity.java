@@ -65,4 +65,11 @@ public class MainActivity extends AppCompatActivity {
         result = number1 / number2;
         binding.resultText.setText(Integer.toString(result));
     }
+
+    public void clear(View view) {
+        binding.number1EditText.setText("");
+        binding.number2EditText.setText("");
+        binding.resultText.setText("");
+        
+    }
 }
