@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
     public void numberClick(View view) {
         String number = "";
 
-        // Hangi butona tıklandığını belirle
         if (view.getId() == binding.btn0.getId()) {
             number = "0";
         } else if (view.getId() == binding.btn1.getId()) { //binding.btn1 e tıklandıysa ?? mı
