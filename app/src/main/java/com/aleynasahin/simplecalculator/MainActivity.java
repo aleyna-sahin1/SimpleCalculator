@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    // Sayı butonlarına tıklanınca (XML'de android:onClick="numberClick" kullandıysanız)
     public void numberClick(View view) {
         String number = "";
 
@@ -72,14 +71,12 @@ public class MainActivity extends AppCompatActivity {
             currentNumber = number;
             isNewCalculation = false;
         } else {
-            // Sayıları yan yana ekle (örn: 9+6=96)
             currentNumber += number;
         }
 
         binding.display.setText(currentNumber);
     }
 
-    // İşlem butonlarına tıklanınca (XML'de android:onClick="operatorClick" kullanın)
     public void operatorClick(View view) {
         String newOperator = "";
 
@@ -95,7 +92,6 @@ public class MainActivity extends AppCompatActivity {
 
         if (!currentNumber.isEmpty()) {
             if (!operator.isEmpty()) {
-                // Önceki işlemi hesapla
                 calculate();
             } else {
                 firstNumber = Double.parseDouble(currentNumber);
@@ -106,7 +102,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Eşittir butonuna tıklanınca (XML'de android:onClick="equalsClick")
     public void equalsClick(View view) {
         if (!currentNumber.isEmpty() && !operator.isEmpty()) {
             calculate();
@@ -115,7 +110,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Nokta butonuna tıklanınca (XML'de android:onClick="decimalClick")
     public void decimalClick(View view) {
         if (!currentNumber.contains(".")) {
             if (currentNumber.isEmpty()) {
@@ -128,7 +122,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Temizle butonuna tıklanınca (XML'de android:onClick="clearClick")
     public void clearClick(View view) {
         currentNumber = "";
         operator = "";
@@ -137,7 +130,6 @@ public class MainActivity extends AppCompatActivity {
         isNewCalculation = true;
     }
 
-    // Sil butonuna tıklanınca (XML'de android:onClick="deleteClick")
     public void deleteClick(View view) {
         if (!currentNumber.isEmpty()) {
             currentNumber = currentNumber.substring(0, currentNumber.length() - 1);
@@ -150,7 +142,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // Hesaplama işlemi
     private void calculate() {
         if (currentNumber.isEmpty() || operator.isEmpty()) return;
 
@@ -171,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
                 if (secondNumber != 0) {
                     result = firstNumber / secondNumber;
                 } else {
-                    binding.display.setText("Hata");
+                    binding.display.setText("Error");
                     currentNumber = "";
                     operator = "";
                     isNewCalculation = true;
@@ -180,7 +171,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
 
-        // Sonucu ekranda göster
         if (result == (int) result) {
             currentNumber = String.valueOf((int) result);
         } else {
@@ -189,32 +179,5 @@ public class MainActivity extends AppCompatActivity {
 
         binding.display.setText(currentNumber);
         firstNumber = result;
-    }
-
-    // Alternatif: XML'de onClick kullanmadıysanız bu metodu onCreate'te çağırın
-    private void setupButtonListeners() {
-        // Sayı butonları
-        binding.btn0.setOnClickListener(this::numberClick);
-        binding.btn1.setOnClickListener(this::numberClick);
-        binding.btn2.setOnClickListener(this::numberClick);
-        binding.btn3.setOnClickListener(this::numberClick);
-        binding.btn4.setOnClickListener(this::numberClick);
-        binding.btn5.setOnClickListener(this::numberClick);
-        binding.btn6.setOnClickListener(this::numberClick);
-        binding.btn7.setOnClickListener(this::numberClick);
-        binding.btn8.setOnClickListener(this::numberClick);
-        binding.btn9.setOnClickListener(this::numberClick);
-
-        // İşlem butonları
-        binding.btnAdd.setOnClickListener(this::operatorClick);
-        binding.btnSubstract.setOnClickListener(this::operatorClick);
-        binding.btnMultiply.setOnClickListener(this::operatorClick);
-        binding.btnDivide.setOnClickListener(this::operatorClick);
-
-        // Diğer butonlar
-        binding.btnDecimal.setOnClickListener(this::decimalClick);
-        binding.btnEquals.setOnClickListener(this::equalsClick);
-        binding.btnAllClear.setOnClickListener(this::clearClick);
-        binding.btnDelete.setOnClickListener(this::deleteClick);
     }
 }
